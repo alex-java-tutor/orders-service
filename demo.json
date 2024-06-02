@@ -1,0 +1,17 @@
+[
+  {
+    "productName": "One",
+    "price": 4,
+    "quantity": 10
+  },
+  {
+    "productName": "Two",
+    "price": 3,
+    "quantity": 5
+  },
+  {
+    "productName": "Three",
+    "price": 3,
+    "quantity": 5
+  }
+]
