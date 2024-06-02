@@ -23,6 +23,8 @@ public abstract class BaseTest {
         System.setProperty("spring.r2dbc.username", container.getUsername());
         System.setProperty("spring.r2dbc.password", container.getPassword());
         System.setProperty("spring.flyway.url", container.getJdbcUrl());
+        System.setProperty("eureka.client.enabled", "false");
+        System.setProperty("spring.cloud.loadbalancer.enabled", "false");
     }
 
     @Autowired
