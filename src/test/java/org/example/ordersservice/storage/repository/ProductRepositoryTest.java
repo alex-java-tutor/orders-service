@@ -23,6 +23,16 @@ public class ProductRepositoryTest extends BaseTest {
     private ProductOrderRepository repository;
 
     @Test
+    void findAllByCreatedBy_returnsCorrectSortedByDateDesc() {
+        // TODO
+    }
+
+    @Test
+    void findAllByCreatedBy_returnsCorrectSortedByDateAsc() {
+        // TODO
+    }
+
+    @Test
     void findAllByUsername_returnsEmptyFlux_whenUserHasNoOrders() {
         var pageable = PageRequest.of(0, 10)
                 .withSort(Sort.by(Sort.Direction.ASC, "createdAt"));
