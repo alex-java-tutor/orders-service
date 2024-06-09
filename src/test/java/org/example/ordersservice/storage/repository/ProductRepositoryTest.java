@@ -14,6 +14,8 @@ import org.springframework.data.domain.Sort;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
+import static org.example.ordersservice.testutils.TestConstants.*;
+
 @Import({R2DBCConfig.class})
 @DataR2dbcTest
 @ImportAutoConfiguration({JacksonAutoConfiguration.class})
@@ -24,12 +26,35 @@ public class ProductRepositoryTest extends BaseTest {
 
     @Test
     void findAllByCreatedBy_returnsCorrectSortedByDateDesc() {
-        // TODO
+        var pageable = PageRequest.of(0, 10)
+                .withSort(Sort.by(Sort.Direction.DESC, "createdAt"));
+        Flux<ProductOrder> orders = repository.findAllByUsername(USER_ONE, pageable);
+        StepVerifier.create(orders)
+                .expectNextMatches(order ->
+                        order.getCreatedAt().equals(ORDER_FIVE_DATE) &&
+                        order.getUsername().equals(USER_ONE))
+                .expectNextMatches(order ->
+                        order.getCreatedAt().equals(ORDER_THREE_DATE) &&
+                                order.getUsername().equals(USER_ONE))
+                .expectNextMatches(order ->
+                        order.getCreatedAt().equals(ORDER_ONE_DATE) &&
+                                order.getUsername().equals(USER_ONE))
+                .verifyComplete();
     }
 
     @Test
     void findAllByCreatedBy_returnsCorrectSortedByDateAsc() {
-        // TODO
+        var pageable = PageRequest.of(0, 10)
+                .withSort(Sort.by(Sort.Direction.ASC, "createdAt"));
+        Flux<ProductOrder> orders = repository.findAllByUsername(USER_TWO, pageable);
+        StepVerifier.create(orders)
+                .expectNextMatches(order ->
+                        order.getCreatedAt().equals(ORDER_TWO_DATE) &&
+                                order.getUsername().equals(USER_TWO))
+                .expectNextMatches(order ->
+                        order.getCreatedAt().equals(ORDER_FOUR_DATE) &&
+                                order.getUsername().equals(USER_TWO))
+                .verifyComplete();
     }
 
     @Test

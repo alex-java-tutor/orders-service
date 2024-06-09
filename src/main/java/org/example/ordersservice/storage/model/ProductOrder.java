@@ -32,6 +32,7 @@ public class ProductOrder {
     @Column("product_line_items")
     private List<ProductLineItem> productLineItems;
     private String username;
+    private OrderStatus status;
     @CreatedDate
     @Column("created_at")
     private LocalDateTime createdAt;

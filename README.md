@@ -18,3 +18,6 @@ backpressure.
 
 https://habr.com/ru/articles/565000/ - статьи про реактивное программирование со 
 Spring WebFlux.
+
+## Offset Keyset пагинация
+https://www.youtube.com/watch?v=wi6h9ox1wwM
