@@ -1,10 +1,12 @@
 package org.example.ordersservice.mapper;
 
+import lombok.RequiredArgsConstructor;
 import org.example.ordersservice.dto.*;
 import org.example.ordersservice.exception.OrderServiceException;
 import org.example.ordersservice.storage.model.OrderStatus;
 import org.example.ordersservice.storage.model.ProductLineItem;
 import org.example.ordersservice.storage.model.ProductOrder;
+import org.example.ordersservice.utils.HashUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +14,10 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor
 public class OrderMapper {
+
+    private final HashUtils hashUtils;
 
     public ProductOrder mapToOrder(CreateOrderRequest request,
                                    String username,
@@ -38,7 +43,7 @@ public class OrderMapper {
 
     public OrderResponse mapToResponse(ProductOrder order) {
         return OrderResponse.builder()
-                .orderId(order.getId())
+                .orderId(hashUtils.hashOf(order.getId()))
                 .totalPrice(order.getTotalPrice())
                 .productLineItems(order.getProductLineItems())
                 .address(Address.builder()

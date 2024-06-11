@@ -9,6 +9,7 @@ import org.example.ordersservice.dto.SortBy;
 import org.example.ordersservice.mapper.OrderMapper;
 import org.example.ordersservice.service.ProductOrderService;
 import org.example.ordersservice.storage.repository.ProductOrderRepository;
+import org.example.ordersservice.utils.HashUtils;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -22,6 +23,7 @@ public class ProductOrderServiceImpl implements ProductOrderService {
     private final ProductOrderRepository repository;
     private final OrderMapper mapper;
     private final ProductClient client;
+    private final HashUtils hashUtils;
 
     @Override
     public Mono<OrderResponse> createOrder(CreateOrderRequest request, String username) {
@@ -38,6 +40,12 @@ public class ProductOrderServiceImpl implements ProductOrderService {
         var pageable = PageRequest.of(from, size)
                 .withSort(sort.getSort());
         return repository.findAllByUsername(username, pageable)
+                .map(mapper::mapToResponse);
+    }
+
+    @Override
+    public Mono<OrderResponse> findOrderById(String orderId) {
+        return repository.findById(hashUtils.idOf(orderId))
                 .map(mapper::mapToResponse);
     }
 }

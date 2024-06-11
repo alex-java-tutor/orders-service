@@ -54,3 +54,7 @@ external:
   service-discovery-url: http://localhost:8761/eureka/
   product-service-url: http://localhost:8081
   product-info-path: "/v1/products/product-info"
+
+hash:
+  salt: Mr14FAkG2VqlefqxltxYkNp6dEw7kfcSzq2411BIYLdSaKLQHCsPfSxRtBUzvI
+  min-hash-length: 10

@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class OrderResponse {
-    private Long orderId;
+    private String orderId;
     private BigDecimal totalPrice;
     private List<ProductLineItem> productLineItems;
     private Address address;

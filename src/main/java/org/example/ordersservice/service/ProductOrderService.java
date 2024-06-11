@@ -12,4 +12,6 @@ public interface ProductOrderService {
 
     Flux<OrderResponse> getOrdersOfUser(String username, SortBy sort, int from, int size);
 
+    Mono<OrderResponse> findOrderById(String orderId);
+
 }
