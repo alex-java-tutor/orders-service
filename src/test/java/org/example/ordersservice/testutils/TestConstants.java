@@ -29,4 +29,11 @@ public class TestConstants {
     public static final Integer PRODUCT_ONE_QUANTITY = 10;
     public static final Integer PRODUCT_TWO_QUANTITY = 5;
     public static final Integer PRODUCT_THREE_QUANTITY = 5;
+    public static final int PRODUCT_CREATE_ONE_QUANTITY = 10;
+    public static final int PRODUCT_CREATE_TWO_QUANTITY = 20;
+    public static final int PRODUCT_CREATE_THREE_QUANTITY = 30;
+    public static final BigDecimal SUCCESS_TOTAL_PRICE = BigDecimal.valueOf(60.6);
+    public static final BigDecimal PRODUCT_CREATE_ONE_PRICE = BigDecimal.valueOf(10.1);
+    public static final BigDecimal PRODUCT_CREATE_TWO_PRICE = BigDecimal.valueOf(20.2);
+    public static final BigDecimal PRODUCT_CREATE_THREE_PRICE = BigDecimal.valueOf(30.3);
 }
