@@ -7,7 +7,7 @@ import java.time.Month;
 public class TestConstants {
 
     public static final String PRODUCT_INFO_PATH = "/v1/products/product-info";
-    public static final int DELAY_MILLIS = 1500;
+    public static final int DELAY_MILLIS = 2500;
     public static final String USER_ONE = "username1";
     public static final String USER_TWO = "username2";
     public static final LocalDateTime ORDER_ONE_DATE = LocalDateTime.of(2024, Month.MAY, 18, 10, 23, 54);
